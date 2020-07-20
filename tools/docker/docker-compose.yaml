@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+
+  nexus:
+    image: sonatype/nexus3:3.25.0
+    volumes:
+      - "nexus-data:/nexus-data"
+    ports:
+      - "7081:8081"
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    volumes:
+     - "jenkins_home:/var/jenkins_home"
+    ports:
+      - 7080:8080
+      - 7050:50000
+  
+volumes:
+  nexus-data: {}
+  jenkins_home: {}
